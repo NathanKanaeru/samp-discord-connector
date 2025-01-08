@@ -61,7 +61,7 @@ jobs:
         bind_mount_repository: true
         cpu: cortex-a7
         commands: |
-            apt update && apt install -y git gcc-11 g++-11 libstdc++-11-dev
+            apt update && apt install -y git gcc-9 g++-9 libstdc++-10-dev
             python -m pip install --upgrade pip
             pip install conan==1.57.0
             conan remote add conan-transit-legacy https://api.bintray.com/conan/conan/conan-transit
