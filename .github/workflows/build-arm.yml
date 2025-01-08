@@ -61,12 +61,11 @@ jobs:
         bind_mount_repository: true
         cpu: cortex-a7
         commands: |
-            apt update && apt install -y git gcc-9 g++-9 libstdc++-10-dev
+            apt update && apt install -y git gcc-9 g++-9 libstdc++-10-dev python python-pip
             python -m pip install --upgrade pip
             pip install conan==1.57.0
             conan remote add conan-transit-legacy https://api.bintray.com/conan/conan/conan-transit
             mkdir -p docker/conan/data
-            mkdir ~/.conan
             mv docker/conan/data ~/.conan
             mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DDCC_VERSION="${{ env.REPO_TAG }}" -DBOOST_ROOT=${{ env.BOOST_ROOT }} -DOPENSSL_ROOT=${{ env.OPENSSL_ROOT }}
             cmake --build .
