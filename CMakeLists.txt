@@ -20,6 +20,7 @@ if(UNIX)
 		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/artifact/"
 		RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/artifact/"
 	)
+        set(TARGET_BUILD_ARCH armv8)
 	SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
 	SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 	SET(CMAKE_INSTALL_RPATH "$\{ORIGIN\}")
@@ -32,7 +33,7 @@ function(add_conan_lib pkg_name conan_pkg)
 
 	conan_cmake_run(
 		REQUIRES ${conan_pkg}
-		ARCH x86
+		ARCH armv8
 		BASIC_SETUP CMAKE_TARGETS
 		BUILD missing
 	)
@@ -82,7 +83,7 @@ else()
 	conan_check(REQUIRED)
 	conan_cmake_run(
 		REQUIRES boost/1.79.0
-		ARCH x86
+		ARCH armv8
 		BASIC_SETUP CMAKE_TARGETS
 		BUILD missing
 		OPTIONS boost:zlib=False
