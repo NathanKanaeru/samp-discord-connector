@@ -19,3 +19,6 @@
 [submodule "libs/omp-sdk"]
 	path = libs/omp-sdk
 	url = https://github.com/openmultiplayer/open.mp-sdk
+[submodule "libs/samp-log-core"]
+	path = libs/samp-log-core
+	url = git@github.com:NathanKanaeru/samp-log-core.git
