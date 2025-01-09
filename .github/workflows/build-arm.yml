@@ -25,8 +25,10 @@ jobs:
       run: echo "REPO_TAG=$(git describe --tags --always)" >> $GITHUB_ENV
       shell: bash
 
-    - name: get-cmake
-      uses: lukka/get-cmake@v3.23.0
+    - name: Install CMake
+      uses: lukka/get-cmake@latest
+      with:
+        cmakeVersion: "3.23.2"
        
     - if: runner.os == 'Windows'
       name: Install boost
@@ -61,7 +63,7 @@ jobs:
         bind_mount_repository: true
         cpu: cortex-a7
         commands: |
-            apt update && apt install -y git gcc-9 g++-9 libstdc++-10-dev python3 python3-pip
+            apt update && apt install -y git gcc-9 g++-9 libstdc++-10-dev python3 python3-pip cmake make
             python3 -m pip install --upgrade pip
             pip3 install --user -v "conan==1.59.0"
             pip3 install --user -v "cmake==3.23.3"
